@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3ed">
+  <meta name="description" content="Atelier Wardrobe - contemporary pieces for the everyday wardrobe.">
+  <title>Atelier Wardrobe | New season, your way</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./config.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="demo-notice" role="status">Demo storefront: sample products and prices. Checkout opens after a merchant account and real catalog are connected.</div>
+  <header class="site-header">
+    <button class="icon-button mobile-only" id="menu-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <a class="wordmark" href="#top">ATELIER <span>WARDROBE</span></a>
+    <nav id="main-nav" aria-label="Main navigation"><a href="#shop">Shop</a><a href="#story">The edit</a><a href="#journal">Style notes</a></nav>
+    <div class="header-actions"><button class="text-button" id="search-toggle" aria-label="Search products">Search</button><button class="text-button" id="cart-toggle" aria-label="Open cart">Bag <span id="cart-count">(0)</span></button></div>
+  </header>
+  <main id="top">
+    <section class="hero"><div class="hero-art" aria-hidden="true"></div><div class="hero-copy"><p class="eyebrow">The new season edit</p><h1>Wear it your way.</h1><p>Modern layers, easy tailoring, and pieces that make getting dressed feel effortless.</p><a class="button button-dark" href="#shop">Shop the collection <span aria-hidden="true">&#8594;</span></a></div></section>
+    <section class="intro" id="story"><p class="eyebrow">The wardrobe</p><h2>Made for every day.</h2><p>Considered silhouettes, rich texture, and a little room to make it your own.</p></section>
+    <section class="shop-section" id="shop"><div class="section-heading"><div><p class="eyebrow">Curated essentials</p><h2>Shop the collection</h2></div><p id="result-count"></p></div><div class="toolbar"><label class="search-field"><span class="sr-only">Search products</span><input id="search" type="search" placeholder="Search the collection"></label><select id="category" aria-label="Filter by category"><option value="all">All categories</option></select><select id="sort" aria-label="Sort products"><option value="featured">Featured</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="name">Name</option></select></div><div id="products" class="product-grid" aria-live="polite"></div></section>
+    <section class="editorial" id="journal"><div class="editorial-art"></div><div class="editorial-copy"><p class="eyebrow">The style notes</p><h2>Make the ordinary feel new.</h2><p>Build an outfit around one piece you love. Keep the rest easy, and let the details do the talking.</p><a href="#shop" class="underlined">Explore the edit &#8594;</a></div></section>
+  </main>
+  <footer><div><a class="wordmark" href="#top">ATELIER <span>WARDROBE</span></a><p>Contemporary pieces for the everyday wardrobe.</p></div><div><h3>Explore</h3><a href="#shop">Shop all</a><a href="#story">The wardrobe</a><a href="#journal">Style notes</a></div><small>© <span id="year"></span> Atelier Wardrobe.</small></footer>
+  <div class="scrim" id="scrim" hidden></div><aside class="cart-drawer" id="cart-drawer" aria-label="Shopping bag" aria-hidden="true"><div class="drawer-head"><h2>Your bag <span id="drawer-count">(0)</span></h2><button class="icon-button" id="cart-close" aria-label="Close cart">&#10005;</button></div><div id="cart-items" class="cart-items"></div><div class="cart-bottom"><p class="cart-subtotal"><span>Subtotal</span><strong id="cart-subtotal">$0.00</strong></p><p class="fine-print">Taxes and shipping calculated at checkout.</p><button class="button button-dark checkout-button" id="checkout">Checkout &#8594;</button><p id="checkout-feedback" role="status"></p></div></aside>
+</body>
+</html>
