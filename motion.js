@@ -1,11 +1,5 @@
 (() => {
-  let enabled = localStorage.getItem('nowline-motion') !== 'off';
-  document.documentElement.classList.toggle('motion-ready', enabled);
-  document.documentElement.classList.toggle('motion-enabled', enabled);
-  document.documentElement.classList.toggle('motion-off', !enabled);
-  const toggle = document.querySelector('#motion-toggle');
-  toggle.setAttribute('aria-pressed', String(enabled));
-  toggle.textContent = enabled ? 'Motion on' : 'Motion off';
+  document.documentElement.classList.add('motion-ready');
   const hero = document.querySelector('.hero');
   const intro = document.querySelector('.intro');
   const editorial = document.querySelector('.editorial');
@@ -33,7 +27,6 @@
   let scheduled = false;
   function update() {
     scheduled = false;
-    if (!enabled) return;
     const viewport = innerHeight || 1;
     const total = Math.max(1, document.documentElement.scrollHeight - viewport);
     progress.style.transform = `scaleX(${Math.min(1, scrollY / total)})`;
@@ -68,15 +61,5 @@
   }
   addEventListener('scroll', schedule, { passive: true });
   addEventListener('resize', schedule);
-  toggle.addEventListener('click', () => {
-    enabled = !enabled;
-    localStorage.setItem('nowline-motion', enabled ? 'on' : 'off');
-    document.documentElement.classList.toggle('motion-ready', enabled);
-    document.documentElement.classList.toggle('motion-enabled', enabled);
-    document.documentElement.classList.toggle('motion-off', !enabled);
-    toggle.setAttribute('aria-pressed', String(enabled));
-    toggle.textContent = enabled ? 'Motion on' : 'Motion off';
-    schedule();
-  });
   schedule();
 })();
