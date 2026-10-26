@@ -41,7 +41,7 @@
   addEventListener('wheel', event => {
     if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
     if (Math.abs(event.deltaX) > Math.abs(event.deltaY) || hasNestedScroller(event.target)) return;
-    const discrete = event.deltaMode !== 0 || (Math.abs(event.deltaY) >= 50 && Number.isInteger(event.deltaY) && event.deltaY % 10 === 0);
+    const discrete = event.deltaMode !== 0 || (Math.abs(event.deltaY) >= 50 && Number.isInteger(event.deltaY));
     if (!discrete) return;
 
     const maxScroll = Math.max(0, document.documentElement.scrollHeight - innerHeight);
