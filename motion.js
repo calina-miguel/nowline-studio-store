@@ -9,6 +9,8 @@
   const hero = document.querySelector('.hero');
   const intro = document.querySelector('.intro');
   const editorial = document.querySelector('.editorial');
+  const shop = document.querySelector('.shop-section');
+  const footer = document.querySelector('footer');
   const progress = document.querySelector('.scroll-progress');
   const products = document.querySelector('#products');
   const observer = new IntersectionObserver(entries => {
@@ -49,6 +51,14 @@
     const editorialRect = editorial.getBoundingClientRect();
     if (editorialRect.bottom > 0 && editorialRect.top < viewport) {
       editorial.style.setProperty('--editorial-shift', `${Math.round((viewport - editorialRect.top) * -0.12)}px`);
+    }
+    const shopRect = shop.getBoundingClientRect();
+    if (shopRect.bottom > 0 && shopRect.top < viewport) {
+      shop.style.setProperty('--shop-shift', `${Math.round((viewport - shopRect.top) * -0.045)}px`);
+    }
+    const footerRect = footer.getBoundingClientRect();
+    if (footerRect.bottom > 0 && footerRect.top < viewport) {
+      footer.style.setProperty('--footer-shift', `${Math.round((viewport - footerRect.top) * -0.1)}px`);
     }
   }
   function schedule() {
