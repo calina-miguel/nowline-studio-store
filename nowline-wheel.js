@@ -1,12 +1,15 @@
 /* Ease discrete mouse-wheel steps without changing touchpad or nested scrolling. */
 (() => {
   let target = null;
+  let position = 0;
   let frameId = 0;
+  let lastTime = 0;
 
   function cancel() {
     if (frameId) cancelAnimationFrame(frameId);
     frameId = 0;
     target = null;
+    lastTime = 0;
     document.documentElement.classList.remove('nowline-wheel-active');
   }
 
@@ -19,20 +22,19 @@
     return false;
   }
 
-  function animate() {
-    const distance = target - scrollY;
-    if (Math.abs(distance) < 0.7) {
+  function animate(time) {
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    target = Math.min(target, maxScroll);
+    const elapsed = lastTime ? Math.min(34, time - lastTime) : 16.7;
+    lastTime = time;
+    const easing = 1 - Math.exp(-elapsed / 125);
+    position += (target - position) * easing;
+    if (Math.abs(target - position) < 0.5) {
       scrollTo(0, target);
       cancel();
       return;
     }
-    const next = scrollY + distance * 0.14;
-    if (Math.abs(next - scrollY) < 1) {
-      scrollTo(0, target);
-      cancel();
-      return;
-    }
-    scrollTo(0, next);
+    scrollTo(0, position);
     frameId = requestAnimationFrame(animate);
   }
 
@@ -48,6 +50,7 @@
     if ((scrollY <= 0 && delta < 0) || (scrollY >= maxScroll && delta > 0)) return;
     event.preventDefault();
     document.documentElement.classList.add('nowline-wheel-active');
+    if (target === null) position = scrollY;
     target = Math.max(0, Math.min(maxScroll, (target ?? scrollY) + Math.max(-320, Math.min(320, delta))));
     if (!frameId) frameId = requestAnimationFrame(animate);
   }, { passive: false });
