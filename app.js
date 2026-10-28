@@ -99,7 +99,7 @@
     $('#cart-toggle').addEventListener('click',openCart); $('#cart-close').addEventListener('click',closeCart); $('#scrim').addEventListener('click',closeCart); document.addEventListener('keydown',event => { if (event.key === 'Escape' && $('#cart-drawer').classList.contains('open')) closeCart(); });
     window.addEventListener('storage',event => { if (event.key === key) { cart = readCart(); renderCart(); } });
     $('#checkout').addEventListener('click',checkout);
-    $('#search-toggle').addEventListener('click',() => { if (window.nowlineScroll) window.nowlineScroll.scrollTo('#shop'); else $('#shop').scrollIntoView({behavior:'smooth'}); $('#search').focus({preventScroll:true}); });
+    $('#search-toggle').addEventListener('click',() => { $('#shop').scrollIntoView(); $('#search').focus(); });
     $('#menu-toggle').addEventListener('click',() => { const open = $('#main-nav').classList.toggle('open'); $('#menu-toggle').setAttribute('aria-expanded',String(open)); });
     $('#main-nav').addEventListener('click',() => { $('#main-nav').classList.remove('open'); $('#menu-toggle').setAttribute('aria-expanded','false'); });
   }
