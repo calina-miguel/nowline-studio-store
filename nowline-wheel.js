@@ -26,7 +26,7 @@
   function animate(time) {
     const maxScroll = Math.max(0, document.documentElement.scrollHeight - innerHeight);
     target = Math.min(target, maxScroll);
-    const elapsed = lastTime ? Math.max(0, time - lastTime) : 16.7;
+    const elapsed = lastTime ? Math.min(34, Math.max(0, time - lastTime)) : 16.7;
     lastTime = time;
     const easing = 1 - Math.exp(-elapsed / 125);
     position += (target - position) * easing;
@@ -58,6 +58,8 @@
   }, { passive: false });
 
   addEventListener('pointerdown', cancel, { passive: true });
+  addEventListener('blur', cancel);
+  addEventListener('resize', cancel);
   reducedMotion.addEventListener('change', cancel);
   addEventListener('keydown', event => {
     if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) cancel();
