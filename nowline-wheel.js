@@ -4,7 +4,6 @@
   let position = 0;
   let frameId = 0;
   let lastTime = 0;
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
   function cancel() {
     if (frameId) cancelAnimationFrame(frameId);
@@ -40,7 +39,6 @@
   }
 
   addEventListener('wheel', event => {
-    if (reducedMotion.matches) return;
     if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
     if (Math.abs(event.deltaX) > Math.abs(event.deltaY) || hasNestedScroller(event.target)) return;
     const discrete = event.deltaMode !== 0 || (Math.abs(event.deltaY) >= 50 && Number.isInteger(event.deltaY));
@@ -58,7 +56,6 @@
   }, { passive: false });
 
   addEventListener('pointerdown', cancel, { passive: true });
-  reducedMotion.addEventListener('change', cancel);
   addEventListener('keydown', event => {
     if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) cancel();
   });

@@ -21,6 +21,6 @@ footer{position:relative;overflow:hidden;isolation:isolate}footer>*:not(.footer-
 .intro,.shop-section,.editorial{scroll-margin-top:100px}
 
 @media(max-width:640px){.site-header.is-scrolled nav{top:68px}.hero-art{inset:auto;transform:translate3d(0,var(--hero-shift,0px),0) scale(1.12)}.hero-copy{transform:none}.hero-index{display:none}.editorial-art{transform:translate3d(0,var(--editorial-shift,0px),0) scale(1.12)}.ambient-word{font-size:110px}.shop-section::before{display:none}.footer-word{font-size:120px;bottom:0}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.motion-ready .reveal,.motion-ready .product-card{opacity:1;transform:none;filter:none;transition:none}.motion-ready .hero .eyebrow,.motion-ready .hero h1,.motion-ready .hero-copy>p:not(.eyebrow),.motion-ready .hero .button{animation:none}.hero-art,.hero-copy,.ambient-word,.shop-section::before,.editorial-art,.footer-word{will-change:auto}.product-art img{transition:none}}
+@media(prefers-reduced-motion:reduce){.motion-ready .reveal,.motion-ready .product-card{opacity:1;transform:none;filter:none;transition:none}.motion-ready .hero .eyebrow,.motion-ready .hero h1,.motion-ready .hero-copy>p:not(.eyebrow),.motion-ready .hero .button{animation:none}.hero-art,.hero-copy,.ambient-word,.shop-section::before,.editorial-art,.footer-word{will-change:auto}.product-art img{transition:none}}
 
 html.nowline-wheel-active{scroll-behavior:auto!important}
