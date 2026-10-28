@@ -7,7 +7,6 @@
   const footer = document.querySelector('footer');
   const progress = document.querySelector('.scroll-progress');
   const products = document.querySelector('#products');
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -32,18 +31,6 @@
     const total = Math.max(1, document.documentElement.scrollHeight - viewport);
     progress.style.transform = `scaleX(${Math.min(1, scrollY / total)})`;
     document.querySelector('.site-header').classList.toggle('is-scrolled', scrollY > 45);
-
-    if (reducedMotion.matches) {
-      [hero, intro, editorial, shop, footer].forEach(section => {
-        section.style.removeProperty('--hero-shift');
-        section.style.removeProperty('--hero-copy-shift');
-        section.style.removeProperty('--intro-shift');
-        section.style.removeProperty('--editorial-shift');
-        section.style.removeProperty('--shop-shift');
-        section.style.removeProperty('--footer-shift');
-      });
-      return;
-    }
 
     const heroRect = hero.getBoundingClientRect();
     if (heroRect.bottom > 0 && heroRect.top < viewport) {
@@ -74,6 +61,5 @@
   }
   addEventListener('scroll', schedule, { passive: true });
   addEventListener('resize', schedule);
-  reducedMotion.addEventListener('change', schedule);
   schedule();
 })();
